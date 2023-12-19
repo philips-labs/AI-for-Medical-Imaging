@@ -1,0 +1,4 @@
+sphinx-rtd-theme>=2.0.0
+rinohtype>=0.5.4
+pygments>=2.17.2
+Pillow>=10.1.0

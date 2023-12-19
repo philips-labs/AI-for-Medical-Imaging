@@ -1,0 +1,15 @@
+/* HUMANS */
+	Host + Dev: Mikhail (aka ZoidBEER)
+	Dates: 2021-05-12 ---> present
+	Contact: aiformedicalimaging@gmail.com
+	Location: Eindhoven, Netherlands
+
+/* THANKS */
+	Notion
+	Musicians we feature
+
+/* SITE */
+	Last update: 2023-12-19
+	Standards: HTML5, CSS3
+	Components: Sphinx
+	Software: PyCharm, Sublime Text, GitHub (gh-pages)
