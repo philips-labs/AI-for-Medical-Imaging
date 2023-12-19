@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mammography &mdash; AI for Medical Imaging Course 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CT" href="ct.html" />
+    <link rel="prev" title="General Purpose X-ray" href="x-ray.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AI for Medical Imaging Course
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medical_imaging.html">Medical Imaging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="medical_imaging.html#dicom">DICOM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medical_imaging.html#nifti">NIfTI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medical_imaging.html#how-the-datasets-are-created">How the datasets are created</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medical_imaging.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medical_imaging.html#optional-read">Optional read</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="x-ray.html">General Purpose X-ray</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="x-ray.html#dicom-format">DICOM format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="x-ray.html#modalities">Modalities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="x-ray.html#typical-image-preprocessing">Typical image preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="x-ray.html#image-formats">Image formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="x-ray.html#how-to-split-the-data">How to split the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="x-ray.html#exercise">Exercise</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mammography</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dicom-format">DICOM format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-read-the-data">How to read the data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typical-image-preprocessing">Typical image preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#image-formats">Image formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-split-the-data">How to split the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ct.html">CT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#dicom-format">DICOM format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#how-to-read-the-data">How to read the data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#series-preprocessing">Series preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#slice-preprocessing">Slice preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#nifti-format">NIfTI format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#image-formats">Image formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#volume-preprocessing">Volume preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#reconstructions">Reconstructions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#d">2D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#id8">3D</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#how-to-split-the-data">How to split the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#exercises">Exercises</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#task-1-classification">Task 1: Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#task-2-segmentation">Task 2: Segmentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors and Acknowledgments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#acknowledgments">Acknowledgments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AI for Medical Imaging Course</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Mammography</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/mg.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mammography">
+<span id="chap-mg"></span><h1>Mammography<a class="headerlink" href="#mammography" title="Link to this heading"></a></h1>
+<p><em>94 minutes to read</em></p>
+<p>First, let’s have a look at the clinical aspect.</p>
+<p>What is mammography, why it’s useful, and how the procedure is done is well-described in this
+<a class="reference external" href="https://www.radiologyinfo.org/en/info/mammo">Mammography article</a>.</p>
+<p>These two videos give a good overview of the Mammography study:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=dEdR4iOdLh0">Introduction to Mammography</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=uH03lQqSeSw">How to read the Mammogram</a></p></li>
+</ul>
+</div></blockquote>
+<p>Also, please take a look at this <a class="reference external" href="https://www.cancer.gov/types/breast/mammograms-fact-sheet">Mammograms fact sheet</a>
+- it answers many disputable questions.</p>
+<p>Second, let’s get familiar with History and Physics.</p>
+<p><a class="reference external" href="https://radiologykey.com/mammography-equipment-and-basic-physics/">Mammography: Equipment and Basic Physics</a>
+- read this article until the “X-ray production” paragraph. X-ray production physics is the same as everywhere.</p>
+<p><a class="reference external" href="https://www.radiologycafe.com/frcr-physics-notes/x-ray-imaging/mammography/">Mammography imaging</a>
+- is a more general and less detailed description,
+but it covers more aspects than the article above, including the basics of the new X-ray imaging technique such as the tomosynthesis.</p>
+<p><a class="reference external" href="https://www.aapm.org/meetings/amos2/pdf/41-10112-77849-656.pdf">Review of the History and the Physics of Mammography</a>
+- a presentation that has lots of very demonstrative images.</p>
+<section id="dicom-format">
+<h2>DICOM format<a class="headerlink" href="#dicom-format" title="Link to this heading"></a></h2>
+<p><em>12 minutes to read</em></p>
+<p>Initially, mammography images were done using films (just like General Purpose X-rays).
+But, nowadays mammography images are usually stored in the DICOM format.</p>
+<p>Mammography DICOM files can have only one modality -
+<a class="reference external" href="https://dicom.innolitics.com/ciods/digital-mammography-x-ray-image/mammography-series/00080060">MG</a>.</p>
+<p>Each mammography study consists of at least four full-view images - CC and MLO for each breast.</p>
+<p>To get the orientation of the mammography image, you should first refer to the
+<a class="reference external" href="https://dicom.innolitics.com/ciods/digital-mammography-x-ray-image/dx-positioning/00540220">View Code Sequence module</a>.
+It contains two important tags:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://dicom.innolitics.com/ciods/digital-mammography-x-ray-image/dx-positioning/00540220/00080100">Code Value</a>
+- to match it with the orientation you should use the
+<a class="reference external" href="https://dicom.nema.org/medical/Dicom/2018d/output/chtml/part16/sect_CID_4014.html">CID 4014 View for Mammography</a>
+table from the DICOM standard.</p></li>
+<li><p><a class="reference external" href="https://dicom.innolitics.com/ciods/digital-mammography-x-ray-image/dx-positioning/00540220/00080104">Code Meaning</a>
+which is self-descriptive.</p></li>
+</ul>
+</div></blockquote>
+<p>Only if the
+<a class="reference external" href="https://dicom.innolitics.com/ciods/digital-mammography-x-ray-image/dx-positioning/00540220">View Code Sequence module</a>
+is not presented, use the
+<a class="reference external" href="https://dicom.innolitics.com/ciods/digital-mammography-x-ray-image/dx-positioning/00185101">View Position tag</a>.
+But remember that this tag is not supposed to be used for mammography, it was designed for the CR and DX images,
+and actually does not have MLO or CC as defined terms.</p>
+<p>Breast laterality can be encoded in two tags:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://dicom.innolitics.com/ciods/digital-mammography-x-ray-image/dx-anatomy-imaged/00200062">Image Laterality</a> - in most cases use this one,</p></li>
+<li><p><a class="reference external" href="https://dicom.innolitics.com/ciods/digital-mammography-x-ray-image/general-series/00200060">Laterality</a> - if the above is not present.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don’t be surprised to find zoomed-in images of the breast tissue in datasets. When a suspicious structure is found,
+doctors want to have a close shot. For screening models, such images are usually discarded.
+But depending on your end goal and a solution pipeline, you may want to use them.</p>
+</div>
+<section id="how-to-read-the-data">
+<h3>How to read the data<a class="headerlink" href="#how-to-read-the-data" title="Link to this heading"></a></h3>
+<p>One study can have multiple series. Each series can have multiple images.</p>
+<p>Though the DICOM standard states that a single DICOM file can store multiple images via
+<a class="reference external" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.6.6.html">Multi-frame Module</a>,
+usually one file corresponds to one slice.</p>
+<p><strong>Example:</strong> The (classical DICOM) files structure for a mammography study with the two series.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└── 1.3.6.1.4.1.9328.50.4.0005  &lt;-- patient&#39;s folder
+    ├── 1.3.6.1.4.1.9328.50.4.4715  &lt;-- study
+    │   ├── 1.3.6.1.4.1.9328.50.4.4716  &lt;-- series
+    │   │   ├── 1-001.dcm  &lt;-- e.g., left CC
+    │   │   ├── 1-002.dcm  &lt;-- e.g., left MLO
+    │   │   ├── 1-003.dcm  &lt;-- e.g., right CC
+    │   │   └── 1-004.dcm  &lt;-- e.g., right MLO
+    │   └── 1.3.6.1.4.1.9328.50.4.5094  &lt;-- series
+    │       ├── 1-001.dcm  &lt;-- e.g., zoomed-in images of the finding
+    │       └── 1-002.dcm
+    └── 1.3.6.1.4.1.9328.50.4.5514  &lt;-- another study of the same patient
+</pre></div>
+</div>
+<p>So, to read mammo data, it can be required to walk recursively through the files and read all of them.
+Then use information from the DICOM header of each file to get access to a full study or series.</p>
+<p>Of course, if you’re working with public datasets, a files index may already exist. Alongside with the annotations or whatsoever.
+But even in this case, it is useful to look into the aggregated from the DICOM files metadata.</p>
+</section>
+<section id="typical-image-preprocessing">
+<h3>Typical image preprocessing<a class="headerlink" href="#typical-image-preprocessing" title="Link to this heading"></a></h3>
+<p>The mammography DICOM image preprocessing is mostly the same as the one for the other DICOM X-rays.
+Please see the <a class="reference internal" href="x-ray.html#xray-image-preprocessing"><span class="std std-ref">General Purpose X-ray -&gt; Typical image preprocessing</span></a> paragraph.</p>
+<p>As image contrast is essential for mammography, the images are usually stored using the 16-bit pixel values.
+So, keep this in mind if you are going to save your images after preprocessing,
+as the most typical imaging formats support only 8-bit values.
+This could lead to signal loss and thus degrade models’ performance.
+Consider the following image formats for saving your preprocessed data (as they support 16-bit images):</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>PNG</p></li>
+<li><p>TIFF</p></li>
+<li><p>JPEG 2000</p></li>
+<li><p>custom formats like .pickle or NumPy arrays, maybe compressed (.gz)</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Picking an image format with 16-bit support doesn’t mean that the images will indeed be saved with the 16-bit gray levels.
+Not all Python image-processing libraries support saving and/or opening 16-bit images.
+For ones that do, in most cases, you will need to specify 16-bit mode explicitly.</p>
+<p>Moreover, you want to double-check that saved images are actually saved in 16-bits.
+Please note, that checking the min and max pixel values of the image is not enough.
+Do check the actual number of grey levels!
+For example, take a look at the pixel intensity histogram.</p>
+</div>
+</section>
+</section>
+<section id="image-formats">
+<h2>Image formats<a class="headerlink" href="#image-formats" title="Link to this heading"></a></h2>
+<p><em>1 minute to read</em></p>
+<p>As already mentioned, the mammography images are saved in 16-bits. In 8-bit images some information is already lost.
+Also, these images are already somehow preprocessed, and you can never be sure how, and whether it was done correctly or not.
+So, the general recommendation would be to avoid image-typed datasets.
+But if you want to use them, please refer to the <a class="reference internal" href="x-ray.html#xray-image-formats"><span class="std std-ref">General Purpose X-ray -&gt; Image formats</span></a>
+section for the details on how to preprocess such images.</p>
+</section>
+<section id="how-to-split-the-data">
+<h2>How to split the data<a class="headerlink" href="#how-to-split-the-data" title="Link to this heading"></a></h2>
+<p><em>7 minutes to read</em></p>
+<p>The general recommendations are <a class="reference internal" href="x-ray.html#xray-split"><span class="std std-ref">the same as for the General Purpose X-ray images</span></a>.
+Note that for mammography studies there can be several series for each patient (a mammography image also has a
+<a class="reference external" href="https://dicom.innolitics.com/ciods/digital-mammography-x-ray-image/patient/00100020">PatientID</a> tag).</p>
+<p>So, to split a DICOM dataset you need to read all files’ headers,
+aggregate the slices into series, group them by patients, and then make a split by patients.</p>
+<p>If you are using a public dataset, you can use the annotations provided for that,
+but it’s always a good idea to have a look at the DICOM metadata.</p>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading"></a></h2>
+<p><em>3 days of work</em></p>
+<p><strong>Task</strong>: Train a multi-label classification model on
+<a class="reference external" href="https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=70230508">The Chinese Mammography Database (CMMD)</a>.</p>
+<ul class="simple">
+<li><p>Try to use different preprocessing techniques, and enable/disable some of the preprocessing steps.</p></li>
+<li><p>What steps are crucial and what is not helpful at all? Why?</p></li>
+<li><p>Make your model suspicious/balanced/confident about its predictions by varying the thresholds for the predictions.</p></li>
+<li><p>[optional] Draw GradCAMs as a visualization of the found pathology.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="x-ray.html" class="btn btn-neutral float-left" title="General Purpose X-ray" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ct.html" class="btn btn-neutral float-right" title="CT" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Koninklijke Philips N.V. and others.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

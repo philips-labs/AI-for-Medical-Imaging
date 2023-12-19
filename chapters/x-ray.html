@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>General Purpose X-ray &mdash; AI for Medical Imaging Course 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mammography" href="mg.html" />
+    <link rel="prev" title="Medical Imaging" href="medical_imaging.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AI for Medical Imaging Course
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medical_imaging.html">Medical Imaging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="medical_imaging.html#dicom">DICOM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medical_imaging.html#nifti">NIfTI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medical_imaging.html#how-the-datasets-are-created">How the datasets are created</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medical_imaging.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medical_imaging.html#optional-read">Optional read</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">General Purpose X-ray</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dicom-format">DICOM format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#modalities">Modalities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typical-image-preprocessing">Typical image preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#image-formats">Image formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-split-the-data">How to split the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mg.html">Mammography</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mg.html#dicom-format">DICOM format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mg.html#how-to-read-the-data">How to read the data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mg.html#typical-image-preprocessing">Typical image preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mg.html#image-formats">Image formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mg.html#how-to-split-the-data">How to split the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mg.html#exercise">Exercise</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ct.html">CT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#dicom-format">DICOM format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#how-to-read-the-data">How to read the data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#series-preprocessing">Series preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#slice-preprocessing">Slice preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#nifti-format">NIfTI format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#image-formats">Image formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#volume-preprocessing">Volume preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#reconstructions">Reconstructions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#d">2D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#id8">3D</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#how-to-split-the-data">How to split the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#exercises">Exercises</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#task-1-classification">Task 1: Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#task-2-segmentation">Task 2: Segmentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors and Acknowledgments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#acknowledgments">Acknowledgments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AI for Medical Imaging Course</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">General Purpose X-ray</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/x-ray.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="general-purpose-x-ray">
+<span id="chap-x-ray"></span><h1>General Purpose X-ray<a class="headerlink" href="#general-purpose-x-ray" title="Link to this heading"></a></h1>
+<p><em>46 minutes to read</em></p>
+<ul class="simple">
+<li><p>A <a class="reference external" href="https://www.ncbi.nlm.nih.gov/books/NBK546155/">Physical principles of X-ray</a>
+chapter of
+<a class="reference external" href="https://doi.org/10.1007/978-3-319-96520-8">Medical Imaging Systems: An Introductory Guide</a>
+book.
+Feel free to skip paragraphs that are not relevant to you.</p></li>
+<li><p><a class="reference external" href="https://www.insideradiology.com.au/plain-radiograph-x-ray-hp/">Clinical indications for X-ray</a></p></li>
+</ul>
+<section id="dicom-format">
+<h2>DICOM format<a class="headerlink" href="#dicom-format" title="Link to this heading"></a></h2>
+<p><em>35 (+10) minutes to read</em></p>
+<section id="modalities">
+<h3>Modalities<a class="headerlink" href="#modalities" title="Link to this heading"></a></h3>
+<p>With X-rays different kinds of images can be created, like tomosynthesis, or CT - both will be touched upon later in this course.
+But the most widespread images are so-called plain X-ray images that are produced by conventional X-ray machines.
+If plain X-ray images are stored in the DICOM format, they can have one of the three modality tags:</p>
+<ul>
+<li><p>CR - Computed Radiography</p>
+<p><a class="reference external" href="https://www.scanx-ndt.com/cr-technology.html">What is CR technology?</a></p>
+<p><a class="reference external" href="https://dicom.innolitics.com/ciods/cr-image">CR file structure</a></p>
+</li>
+<li><p>DX - Digital Radiography (DX stands for Digital X-ray)</p>
+<p><a class="reference external" href="https://dicom.innolitics.com/ciods/digital-x-ray-image">DX file structure</a></p>
+</li>
+<li><p>RG - RadioGraphic imaging (conventional film/screen) - if you are to work with these files, they are already digitized
+but still should be marked as RG.</p>
+<p>The RG DICOM file structure may differ from the CR and DX ones.
+But most tags, and thus preprocessing, should be generally the same.
+We don’t mention this modality in the next section because of that.</p>
+</li>
+</ul>
+</section>
+<section id="typical-image-preprocessing">
+<span id="xray-image-preprocessing"></span><h3>Typical image preprocessing<a class="headerlink" href="#typical-image-preprocessing" title="Link to this heading"></a></h3>
+<p>Firstly, we should understand what the DICOM LUT (LookUp Table) is:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.leadtools.com/help/sdk/v21/dh/to/working-with-dicom-lut.html">Working with DICOM LUT</a></p></li>
+<li><p><a class="reference external" href="https://gdcm.sourceforge.net/wiki/index.php/Modality_LUT">Modality and VOI LUTs</a>
+(Original link stopped working, but the material is still available via
+<a class="reference external" href="https://web.archive.org/web/20180527043519/https://gdcm.sourceforge.net/wiki/index.php/Modality_LUT">Internet Archive</a>)</p></li>
+</ul>
+<p>The general formula for the DICOM X-ray preprocessing is the following:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>nice_looking_image = inversion[optional](  VOI_LUT( Modality_LUT(pixel_data) )  )</p>
+</div>
+<p>Each function in the formula is described separately below.</p>
+<p><strong>Modality LUT</strong> is used to obtain physically meaningful values (e.g.,
+<a class="reference external" href="https://en.wikipedia.org/wiki/Hounsfield_scale#Definition">HU</a>,
+<a class="reference external" href="https://en.wikipedia.org/wiki/Absorbance">OD</a>).</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://dicom.innolitics.com/ciods/cr-image/modality-lut">Modality LUT tag for CR file</a></p></li>
+<li><p><a class="reference external" href="https://dicom.innolitics.com/ciods/digital-x-ray-image/general-image/00409096">Modality LUT tag for DX file</a></p></li>
+<li><p><a class="reference external" href="https://pydicom.github.io/pydicom/dev/reference/generated/pydicom.pixel_data_handlers.apply_modality_lut.html">Pydicom function to apply Modality LUT</a></p></li>
+</ul>
+<p><strong>VOI (Value Of Interest) LUT</strong> is used to obtain pictures where a certain type of tissue looks nice (well-contrasted).</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://dicom.innolitics.com/ciods/cr-image/voi-lut">VOI LUT tag for CR file</a></p></li>
+<li><p><a class="reference external" href="https://dicom.innolitics.com/ciods/digital-x-ray-image/voi-lut">VOI LUT tag for DX file</a></p></li>
+<li><p><a class="reference external" href="https://pydicom.github.io/pydicom/dev/reference/generated/pydicom.pixel_data_handlers.apply_voi_lut.html">Pydicom function to apply VOI LUT</a></p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In one DICOM file, it can be more than one VOI LUT!</p>
+</div>
+<p><strong>Photometric Interpretation</strong> tag points to how to understand the value of the pixels.</p>
+<p>In the case of X-rays, there are two possible values of the Photometric Interpretation tag:
+MONOCHROME1 (dense tissues are dark) and MONOCHROME2 (dense tissues are bright). The last one seems to be used more commonly.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://dicom.innolitics.com/ciods/cr-image/image-pixel/00280004">Photometric Interpretation tag for CR file</a></p></li>
+<li><p><a class="reference external" href="https://dicom.innolitics.com/ciods/digital-x-ray-image/image-pixel/00280004">Photometric Interpretation tag for DX file</a></p></li>
+</ul>
+<p>Usually, you will need to pass the images into the model with one pre-selected Photometric Interpretation.
+Invert the image explicitly when needed. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">PhotometricInterpretation</span> <span class="o">==</span> <span class="s1">&#39;MONOCHROME1&#39;</span><span class="p">:</span>
+  <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">img</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://pydicom.github.io/pydicom/dev/old/working_with_pixel_data.html">Pydicom tutorial</a>
+on how to work with DICOM pixel data.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The tutorial above shows only what you can do with pixel data. It <strong>does not</strong> describe the image preparation sequence.</p>
+</div>
+<p>[optional] The complete description of how to preprocess the DICOM pixel data to the properly looking image can be found
+in the <a class="reference external" href="http://dicom.nema.org/medical/Dicom/2018d/output/chtml/part04/sect_N.2.html">Pixel Transformation Sequence</a>
+section of the <a class="reference external" href="https://www.dicomstandard.org/current">official DICOM standard documentation</a>.</p>
+</section>
+</section>
+<section id="image-formats">
+<span id="xray-image-formats"></span><h2>Image formats<a class="headerlink" href="#image-formats" title="Link to this heading"></a></h2>
+<p><em>14 minutes to read</em></p>
+<p>Fairly often medical datasets are stored using widespread image file formats like png, jpg/jpeg, tiff, etc.
+Though images are much easier to read with Python, usually it’s harder to combine such datasets with the other ones.
+First of all, those image formats can introduce their own artifacts (like jpeg compression).
+Second, the authors of a dataset can use any preprocessing they like (maybe skipping or modifying some steps described in the previous paragraph, or introducing new ones).
+As a result, image statistics can vary significantly for images from different sources.
+It’s great when authors of the dataset describe the preprocessing they applied in detail, but unfortunately, it’s not always the case.</p>
+<p>Typical image <strong>preprocessing</strong> serves multiple purposes:</p>
+<ul class="simple">
+<li><p>To make image statistics better (to ease training)</p></li>
+<li><p>Increase visual contrast (disputable, because NNs can learn contrast-enhancing filters by themselves)</p></li>
+<li><p>Equalize input image statistics from different datasets (the most important one)</p></li>
+</ul>
+<p>This is usually done with either
+<a class="reference external" href="https://en.wikipedia.org/wiki/Histogram_equalization">histogram equalization</a>
+or <a class="reference external" href="https://en.wikipedia.org/wiki/Adaptive_histogram_equalization#CLAHE">CLAHE</a>
+(<a class="reference external" href="https://www.kaggle.com/raddar/popular-x-ray-image-normalization-techniques">example notebook</a>).</p>
+</section>
+<section id="how-to-split-the-data">
+<span id="xray-split"></span><h2>How to split the data<a class="headerlink" href="#how-to-split-the-data" title="Link to this heading"></a></h2>
+<p><em>1 minute to read</em></p>
+<p>As usual, we use standard train/validation/test split.
+A good practice is to have another out-of-domain test set (e.g., from a different source/device/dataset)
+to measure the final performance of the model.</p>
+<p>The details of how to split your data depend on the task.
+But usually, images are split based on the patient IDs.
+This is commonly required because if, e.g., you are trying to classify pathologies,
+the appearance of the X-ray images of the same person with the same pathology in the different data splits would introduce a data leak.
+Which basically means that the network will memorize that <em>this</em> patient always has <em>this</em> pathology.</p>
+<p>In the case of DICOM datasets, you can use the
+<a class="reference external" href="https://dicom.innolitics.com/ciods/cr-image/patient/00100020">PatientID</a> tag, if it’s not empty.
+Otherwise (or in the case of an image-format dataset), the only information you have is what the dataset authors provided.</p>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading"></a></h2>
+<p><em>3(+2) days of work</em></p>
+<p><strong>Task</strong>: Train the classification model on
+the <a class="reference external" href="https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia">PNG dataset</a>, make it work on
+the <a class="reference external" href="https://www.kaggle.com/c/rsna-pneumonia-detection-challenge/data">DICOM dataset</a>.</p>
+<ul class="simple">
+<li><p>Try to use different preprocessing techniques, enable/disable some of the preprocessing steps.</p></li>
+<li><p>What steps are crucial and what is not helpful at all? Why?</p></li>
+<li><p>[optional] Try to solve the inverse task: train on a DCM dataset and make it work on a PNG dataset.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="medical_imaging.html" class="btn btn-neutral float-left" title="Medical Imaging" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mg.html" class="btn btn-neutral float-right" title="Mammography" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Koninklijke Philips N.V. and others.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

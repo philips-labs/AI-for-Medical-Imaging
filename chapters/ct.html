@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CT &mdash; AI for Medical Imaging Course 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Conclusion" href="conclusion.html" />
+    <link rel="prev" title="Mammography" href="mg.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AI for Medical Imaging Course
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="medical_imaging.html">Medical Imaging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="medical_imaging.html#dicom">DICOM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medical_imaging.html#nifti">NIfTI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medical_imaging.html#how-the-datasets-are-created">How the datasets are created</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medical_imaging.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medical_imaging.html#optional-read">Optional read</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="x-ray.html">General Purpose X-ray</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="x-ray.html#dicom-format">DICOM format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="x-ray.html#modalities">Modalities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="x-ray.html#typical-image-preprocessing">Typical image preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="x-ray.html#image-formats">Image formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="x-ray.html#how-to-split-the-data">How to split the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="x-ray.html#exercise">Exercise</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mg.html">Mammography</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mg.html#dicom-format">DICOM format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mg.html#how-to-read-the-data">How to read the data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mg.html#typical-image-preprocessing">Typical image preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mg.html#image-formats">Image formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mg.html#how-to-split-the-data">How to split the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mg.html#exercise">Exercise</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dicom-format">DICOM format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-read-the-data">How to read the data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#series-preprocessing">Series preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slice-preprocessing">Slice preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nifti-format">NIfTI format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#image-formats">Image formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#volume-preprocessing">Volume preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reconstructions">Reconstructions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#d">2D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">3D</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-split-the-data">How to split the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#task-1-classification">Task 1: Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-2-segmentation">Task 2: Segmentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors and Acknowledgments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#acknowledgments">Acknowledgments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AI for Medical Imaging Course</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">CT</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/ct.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ct">
+<span id="chap-ct"></span><h1>CT<a class="headerlink" href="#ct" title="Link to this heading"></a></h1>
+<p><em>121 minutes to read</em></p>
+<ul class="simple">
+<li><p>Description of the <a class="reference external" href="https://radiologykey.com/basic-principles-of-computed-tomography-physics-and-technical-considerations/">Basic Principles of Computed Tomography Physics and Technical Considerations</a></p></li>
+<li><p>There is also a
+<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S2352047716300090">Low dose chest CT protocol</a>
+which is adopted rapidly in hospitals across the globe</p></li>
+<li><p>A short description of the contrast-enhanced CT can be found on
+<a class="reference external" href="https://en.wikipedia.org/wiki/Contrast_CT">Wikipedia</a>.
+And the detailed one -
+<a class="reference external" href="http://www.svuhradiology.ie/diagnostic-imaging/ct-2/">Contrast-enhanced CT</a></p></li>
+<li><p>A good overview with many pictures can be found in the
+<a class="reference external" href="https://www.lf2.cuni.cz/files/page/files/2014/basic_principles_of_ct.pdf">Basic principles of computed tomography slides</a></p></li>
+<li><p><a class="reference external" href="https://www.insideradiology.com.au/computed-tomography-hp/">Clinical indications and contradictions for the CT</a></p></li>
+</ul>
+<section id="dicom-format">
+<h2>DICOM format<a class="headerlink" href="#dicom-format" title="Link to this heading"></a></h2>
+<p><em>76 minutes to read</em></p>
+<p>Most commonly, you can find CT data in the DICOM format.
+The only possible modality for the images is “<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/general-series/00080060">CT</a>”
+(for LDCT too).</p>
+<p>As the CT study is a 3D scan of a patient, it’s possible to do a variety of reconstructions (both 2D and 3D).
+To distinguish initial CT scan images and reconstructions, the first value of the
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/general-image/00080008">Image Type</a> tag can be used.
+Note that this tag is optional, so it may not be presented in the file.</p>
+<p>Now, let’s push aside the reconstructions and focus on the initial CT images (which in most cases are axial slices).
+The clinically significant reconstructions will be described in the <a class="reference internal" href="#ct-recon"><span class="std std-ref">Reconstructions</span></a> section.</p>
+<section id="how-to-read-the-data">
+<h3>How to read the data<a class="headerlink" href="#how-to-read-the-data" title="Link to this heading"></a></h3>
+<p>A CT study may contain several series, e.g., in contrast-enhanced studies 3-4 series are usually presented.
+Each series consists of many images (usually hundreds),
+called <em>slices</em>, because they “cut” the patient across.
+Here again (as in the Mammography chapter), we need to note that
+hypothetically, a single DICOM file can store multiple slices using the
+<a class="reference external" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part03/sect_C.7.6.6.html">Multi-frame Module</a>,
+but usually that’s not the case. However, ensuring one file corresponds to one slice is always a good idea.</p>
+<p><strong>Example:</strong> The (classical DICOM) files structure for a CT study with the two series.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└── 1.3.6.1.4.1.9328.50.4.0005  &lt;-- patient&#39;s folder
+    ├── 1.3.6.1.4.1.9328.50.4.4715  &lt;-- study
+    │   ├── 1.3.6.1.4.1.9328.50.4.4716  &lt;-- series
+    │   │   ├── 1-001.dcm  &lt;-- slice
+    │   │   ├── 1-002.dcm
+    │   │   ├── ...
+    │   │   └── 1-401.dcm
+    │   └── 1.3.6.1.4.1.9328.50.4.5094  &lt;-- series
+    │       ├── 1-001.dcm
+    │       ├── 1-002.dcm
+    │       ├── ...
+    │       └── 1-379.dcm
+    └── 1.3.6.1.4.1.9328.50.4.5514  &lt;-- study
+</pre></div>
+</div>
+<p>So, to read a CT dataset, it’s required to walk recursively through all the files and read all of them.
+Then use information from the DICOM header of each file to get access to a full study or series.</p>
+<p>Now is the best time to familiarize yourself with the set of
+<a class="reference external" href="http://dicom.nema.org/dicom/2013/output/chtml/part05/chapter_9.html">Unique Identifiers (UIDs)</a>.
+The three UIDs worth noting regarding the CT modality are:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/general-study/0020000d">StudyInstanceUID</a> - uniquely specifies the study</p></li>
+<li><p><a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/general-series/0020000e">SeriesInstanceUID</a> - uniquely specifies the series</p></li>
+<li><p><a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/sop-common/00080018">SOPInstanceUID</a> - uniquely specifies the slice</p></li>
+</ul>
+<p>You can rely neither on the folder names to find slices belonging to one study/series
+nor on the file names of the DICOM file to get the right ordering of the slices.
+Moreover, there’s no guarantee that the slices’ file names will contain any numbering at all.
+The files can be stored in any arbitrary manner.</p>
+<p>So, <strong>the only robust way</strong> to group the files into studies/series <strong>is to use the</strong> aforementioned <strong>UID tags</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It was found that in studies acquired by the TOSHIBA devices, another tag should be taken into account.
+It’s possible that the slices with the same SeriesInstanceUID would de-facto correspond to the different series,
+for which the <a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/ct-image/00200012">AcquisitionNumber</a> tag should be different.
+<strong>BUT</strong> as this tag is of Type 2 (Required, Empty if Unknown), you should be careful with such images.</p>
+</div>
+<p>To learn how to read the DICOM file itself, please refer to the
+<a class="reference internal" href="medical_imaging.html#mi-exercises"><span class="std std-ref">recommendations in the Medical imaging -&gt; Exercises</span></a> section.</p>
+</section>
+<section id="series-preprocessing">
+<h3>Series preprocessing<a class="headerlink" href="#series-preprocessing" title="Link to this heading"></a></h3>
+<p>Now, when you have a complete series, the slices should be ordered according to their spatial position
+— so the images would go successively from the top to the bottom.</p>
+<p>To sort CT images the
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/image-plane/00200032">Image Position Patient</a> tag is used.
+For now, we are only interested in the Z-axis of this tag — it goes from the patient’s feet to the head.
+So, in order to get the right ordering, we just need to <strong>sort</strong> the slices <strong>descending</strong> by the 3rd (Z) value of the tag.</p>
+<p>What all these numbers mean will be described shortly.</p>
+</section>
+<section id="slice-preprocessing">
+<h3>Slice preprocessing<a class="headerlink" href="#slice-preprocessing" title="Link to this heading"></a></h3>
+<p>If you are not familiar with the DICOM LUT (LookUp Table), please refer to the
+<a class="reference internal" href="x-ray.html#xray-image-preprocessing"><span class="std std-ref">first part of the General Purpose X-ray -&gt; Typical image preprocessing</span></a> section.</p>
+<p>The general formula for the DICOM CT preprocessing is the following:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>nice_looking_image = windowing(  orientation_correction ( Modality_LUT(pixel_data) )  )</p>
+</div>
+<p>Each function in the formula is described separately below.</p>
+<p><strong>Modality LUT</strong></p>
+<ul class="simple">
+<li><p>In case of CT images, Modality LUT is used to get
+<a class="reference external" href="https://en.wikipedia.org/wiki/Hounsfield_scale#Definition">Hounsfield Units</a> from pixel values</p></li>
+<li><p>In case of CT images, there’s no tag named “Modality LUT”. The
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/ct-image/00281053">RescaleSlope</a> and
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/ct-image/00281052">RescaleIntercept</a> tags are
+used instead. These two tags define the linear transformation which maps the raw pixel values to the HU</p></li>
+<li><p>But anyway, to apply this transformation the same <a class="reference external" href="https://pydicom.github.io/pydicom/dev/reference/generated/pydicom.pixel_data_handlers.apply_modality_lut.html">Pydicom apply Modality LUT function</a>
+can be used</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The result of this transformation is an image with pixel values in HU.
+This means that each value has a very clear interpretation.
+And this holds true for <strong>any</strong> <em>manufacturer</em>, <em>scanner</em>, <em>patient</em>, <em>reconstruction</em>, <em>projection</em>, etc.</p>
+<p>This property makes CT very comfortable to use for deep learning
+because it allows mitigating an issue, known as a <em>domain shift</em>.
+Of course, it doesn’t solve it completely (e.g., the differences between CT and LDCT are still an issue),
+but it helps a lot.</p>
+</div>
+<p><strong>Orientation correction</strong></p>
+<p>The orientation correction step is somewhat more complicated.</p>
+<p>First of all, please take a look at the
+<a class="reference external" href="http://dicom.nema.org/medical/dicom/current/output/chtml/part17/chapter_A.html">Patient Orientation normative</a>.</p>
+<p>To understand the meaning of the tags in the
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/image-plane">Image Plane module</a>
+please read the
+<a class="reference external" href="http://dicomiseasy.blogspot.com/2013/06/getting-oriented-using-image-plane.html">Getting Oriented using the Image Plane Module</a> article.</p>
+<p>Typically, DICOM-viewers use this module only for setting the right orientation-description letters in the slice.
+But as we are going to train the models, we need to transform the images to look consistently
+— i.e. medically meaningful (correct organs location and view from feet).</p>
+<p>Let’s have a look at the
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/image-plane/00200037">Image Orientation Patient</a> tag.
+It is stored in the following format:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ImageOrientationPatient = [row_x, row_y, row_z, col_x, col_y, col_z], <br />
+where: <br />
+first 3 values — direction cosines for rows, <br />
+second 3 values — direction cosines for columns.</p>
+</div>
+<p>Usually, CT scanners produce strictly axial slices,
+so the possible values in the Image Orientation Patient tag can be only {1, -1, 0}.
+However, modern scanners’ gantry can be tilted within a certain range,
+which would lead to other values in the Image Orientation Patient tag.
+Gantry tilt is used mostly for heart CT which is a whole new world.
+Sometimes it’s also used for head CT, but this is rather a rare case.
+So, we will not cover these somewhat exotic cases in this chapter.</p>
+<p>We want the image to look like its Image Orientation Patient tag is [1, 0, 0, 0, 1, 0]:</p>
+<img alt="../_images/IOP_OK.png" src="../_images/IOP_OK.png" />
+<p>To do so, a combination of 90-degrees rotations and vertical/horizontal flips should be applied to the image.</p>
+<p>After these transformations, the patient slice will be oriented like the patient is laying on the scanner table supine.
+But the table can be at the side or at the top of the image.</p>
+<p>Depending on the task you are solving it may or may not be a problem for the model.
+Anyway, it most probably would be a problem for the doctors,
+because they usually look at the images which are also oriented according to gravity
+(when scanner table is located at the bottom of the image).
+To apply this final orientation transformation the
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/general-series/00185100">Patient Position</a> tag is used.
+It describes the patient’s position according to the scanner using
+<a class="reference external" href="http://dicom.nema.org/medical/Dicom/2018d/output/chtml/part03/sect_C.7.3.html#sect_C.7.3.1.1.2">specified in DICOM standard abbreviations</a>.</p>
+<p>The Head First and Feet First slices are oriented similarly,
+so the latter letters of the Patient Position tag should be taken into account.
+Rotate the slice to be orientated according to gravity, if you need to.
+Be it for solving the task or just for visualization purposes.</p>
+<p>An overall formula for the orientation correction step is the following:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>correctly_oriented_image = PatientPosition[optional]( ImageOrientationPatient(pixel_data) )</p>
+</div>
+<p>There are plenty of nuances in the orientation correction procedure. Please refer to the
+<a class="reference external" href="https://github.com/philips-internal/AI-for-Medical-Imaging/blob/main/docs/assets/notebooks/ct_correct_orientation.ipynb">example orientation correction Jupyter Notebook</a>
+to understand it better.</p>
+<p id="ct-windowing"><strong>Windowing</strong></p>
+<p>So-called Windowing is the procedure that is used to increase the visual contrast of certain tissues.
+As you already know, after the Modality LUT transformation, the CT image pixel values are in the HU.
+The HU scale starts from -1000 (air) and ends around 30000 (gold, steel, and brass),
+so the HU image is usually stored using the int16 data type. This is a fairly wide scale.
+But <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3043920/">the human eye can percept only 700-900 grey levels</a>
+(scroll down to the Conclusions right away), and a few dozen levels if the pixels are adjacent.
+This is why for a radiologist to be able to see different tissues effectively, a certain range of HU values is taken,
+and then it’s visualized.</p>
+<p>To get details of the windowing procedure please see
+<a class="reference external" href="https://radiopaedia.org/articles/windowing-ct">this radiopaedia article</a> and
+<a class="reference external" href="https://www.radiologycafe.com/medical-students/radiology-basics/ct-overview">this overview</a>,
+which has great example images of the different windows applied.</p>
+<p>Also, please watch
+<a class="reference external" href="https://www.youtube.com/watch?v=4pb1f79h7_I">this short explanation video</a>
+of the windowing procedure for the radiology students.</p>
+<p>In the DICOM file, the parameters for the windowing procedure are stored in the
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/voi-lut">VOI LUT module</a>.
+The actual windowing parameters can be stored either in the
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/voi-lut/00281050">Window Center</a> and
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/voi-lut/00281051">Window Width</a> tags or in the
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/voi-lut/00283010">VOI LUT Sequence</a> tag.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Multiple windows can be stored in the
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/voi-lut/00283010">VOI LUT Sequence</a>.</p>
+</div>
+<p>The good news is that we still can apply windowing transformation to the CT image with the same
+<a class="reference external" href="https://pydicom.github.io/pydicom/dev/reference/generated/pydicom.pixel_data_handlers.apply_voi_lut.html">Pydicom apply_voi_lut function</a>.
+Please note the <em>index</em> parameter.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using this function, by default the
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/voi-lut/00281050">Window Center</a> and
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/voi-lut/00281051">Window Width</a> tags will be ignored if
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/voi-lut/00283010">VOI LUT Sequence</a> is present,</p>
+</div>
+<p>You can play with different windows using the sample image from the
+<a class="reference external" href="https://github.com/philips-internal/AI-for-Medical-Imaging/blob/main/docs/assets/notebooks/ct_correct_orientation.ipynb">orientation correction example Jupyter Notebook</a>.</p>
+</section>
+</section>
+<section id="nifti-format">
+<h2>NIfTI format<a class="headerlink" href="#nifti-format" title="Link to this heading"></a></h2>
+<p><em>116 minutes to read</em></p>
+<p>You are already familiar with the NIfTI format (refer to <a class="reference internal" href="medical_imaging.html#mi-nifti"><span class="std std-ref">Medical Imaging -&gt; NIfTI</span></a> section if not).</p>
+<p>The main difference between DICOM and NIfTI is that the raw image data in NIfTI is saved as a 3D image,
+while in DICOM you have 2D images (slices).</p>
+<p>In case of CT studies, NIfTI files will contain the entire series (all of its slices).
+The file contains very much less metadata than the DICOM files.
+Unlike in DICOM, the NIfTI header is limited in bytes.
+NIfTI header contains metadata describing the 3D image and its parameters,
+required for the correct 3D array transformation to the meaningful volume.</p>
+<p>It’s not always the case that the transforms are described as affine transformations,
+it can be in the form of
+<a class="reference external" href="https://www.3dgep.com/understanding-quaternions/">quaternions</a>
+or just a set of transformations.</p>
+<p>NIfTI files use a different coordinate system than the DICOM.
+To understand this coordinate system please read the
+<a class="reference external" href="https://nipy.org/nibabel/coordinate_systems.html">Coordinate systems and affines</a> article.</p>
+<p>NIfTI files can include time series (e.g., for fMRI studies), but it’s not very common, and it is not used in CT studies.
+So, we will not consider such cases in this chapter.</p>
+<p>The list of the tags can be found in the
+<a class="reference external" href="https://nipy.org/nibabel/nifti_images.html">Working with NIfTI images</a> tutorial.
+It also describes how to use information from these tags to apply the transformations to the raw volumetric data.</p>
+<p>Official NIfTI documentation also provides a great
+<a class="reference external" href="https://nifti.nimh.nih.gov/nifti-1/documentation/faq">FAQ</a>.</p>
+</section>
+<section id="image-formats">
+<h2>Image formats<a class="headerlink" href="#image-formats" title="Link to this heading"></a></h2>
+<p><em>1 minute to read</em></p>
+<p>That’s a pretty rare case for CT images, but sometimes you can find such datasets.
+In that cases, the only meta-information you have is what the dataset authors provided.</p>
+<p>The general recommendation would be to avoid image-typed CT datasets.
+But if there’s no choice, please see the <a class="reference internal" href="x-ray.html#xray-image-formats"><span class="std std-ref">General Purpose X-ray -&gt; Image formats</span></a> section for the details on how to preprocess such images.</p>
+</section>
+<section id="volume-preprocessing">
+<span id="ct-vp"></span><h2>Volume preprocessing<a class="headerlink" href="#volume-preprocessing" title="Link to this heading"></a></h2>
+<p><em>8 minutes to read</em></p>
+<p>Depending on the approach used for solving a task, you can apply volumetric preprocessing or not.
+For instance, if you are going to train a slice-wise model, maybe you don’t need to build volumes from the slices.
+But if you are going to use a 3D-model, you will need to transform all of your series into a homogeneous volume.</p>
+<p>The most commonly used volumetric preprocessing is just a 3D interpolation into a homogeneous grid of a pre-defined density.
+Usually,
+<a class="reference external" href="https://en.wikipedia.org/wiki/Trilinear_interpolation">Trilinear Interpolation</a>
+is used (because it is fast), but you may consider using other types of
+<a class="reference external" href="https://en.wikipedia.org/wiki/Multivariate_interpolation">3D-applicable interpolations</a>
+(like the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Tricubic_interpolation">Tricubic</a>
+or
+<a class="reference external" href="https://en.wikipedia.org/wiki/Spline_interpolation">Spline</a>
+).</p>
+<p>For DICOM files, to reconstruct an image with the correct aspect ratio, you’ll need the following tags:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/image-plane/00280030">Pixel Spacing</a></p></li>
+<li><p><a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/image-plane/00180050">Slice Thickness</a></p></li>
+</ul>
+<p>Interpolation functions are available in the Python libraries:</p>
+<ul class="simple">
+<li><p>For the NumPy arrays, you can use the
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.RegularGridInterpolator.html">Regular Grid Interpolator</a>
+from the
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/index.html">SciPy</a> library.</p></li>
+<li><p>If you are working with NIfTI data, you can use native
+<a class="reference external" href="https://nipy.org/nibabel/reference/nibabel.processing.html">NiBabel functionality</a>.</p></li>
+<li><p>You may also consider using <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.interpolate.html">PyTorch interpolate</a> function.</p></li>
+</ul>
+<p>When the volume is preprocessed, you can split it back into slices if you need to
+(e.g., for the task or visualization purposes).</p>
+</section>
+<section id="reconstructions">
+<span id="ct-recon"></span><h2>Reconstructions<a class="headerlink" href="#reconstructions" title="Link to this heading"></a></h2>
+<p><em>7 minutes to read</em></p>
+<p>Different kinds of reconstructions can be done with the CT data.
+They are used by clinicians to better understand and describe the patient’s conditions.</p>
+<p>Usually, all the reconstructions described below, are already done on the scanner workstation,
+and you rather will need to filter them out, or just pick and use them.</p>
+<p>But still, when the complete series volume has been built, you can do the reconstructions yourself if you need to.</p>
+<section id="d">
+<h3>2D<a class="headerlink" href="#d" title="Link to this heading"></a></h3>
+<p><strong>Multi-Planar Reconstruction (MPR)</strong></p>
+<p><a class="reference external" href="https://radiopaedia.org/articles/multiplanar-reformation-mpr">Multi-Planar Reconstruction</a>
+is a technique to build the slices across other than the original, in case of CT – axial, dimension.
+Usually, it’s strictly coronal and sagittal projections.</p>
+<p>To build them from the preprocessed volume, you just need to pick the planes from the volume across the corresponding dimension.</p>
+<p>If you need to visualize the volume from the raw (not preprocessed) volume built from DICOM files, you may
+<a class="reference external" href="https://pydicom.github.io/pydicom/dev/auto_examples/image_processing/reslice.html">use scaling at the visualization step</a>.</p>
+<p>In case of NIfTI files, you’ll need to use the transformation tags as it’s described in the
+<a class="reference internal" href="#ct-vp"><span class="std std-ref">CT -&gt; Volume preprocessing</span></a> section.
+Again, you may want to pick the planes across the different dimensions of the preprocessed volume
+or do the transformation only at the visualization step.</p>
+<p>Also, when you have all the required parameters to do the volumetric transformations, you can reconstruct
+a plane that cuts the volume at arbitrary angles (resulting in an <em>oblique</em> projection).
+In this case, you’ll need to do a trilinear interpolation to build the desired plane image.
+You may use the same
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.RegularGridInterpolator.html">Regular Grid Interpolator</a>
+from the
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/index.html">SciPy</a> library.</p>
+<p>Though these reconstructions are used regularly in the clinical settings for patient diagnosis,
+they are usually not needed for the model training.</p>
+<p><strong>Maximum Intensity Projection (MIP)</strong></p>
+<p><a class="reference external" href="https://radiopaedia.org/articles/maximum-intensity-projection">Maximum Intensity Projection</a>
+is a technique that is done by projecting maximum intensity values of the volume to the 2D plane.</p>
+<p>Usually, the MIP is built not from the entire volume, but a certain part of it. <br />
+Examples:</p>
+<ul class="simple">
+<li><p>for lungs nodule detection: the entire volume is split into several blocks across the vertical axis,
+and then, again vertical, MIPs are built for each block</p></li>
+<li><p>for cerebral arteries visualization: the box inscribed in the patient’s skull is taken,
+and then MIPs are built from different angles within a certain range and with a certain step
+resulting in a set of MIPs imitating a flyby around the vessels</p></li>
+</ul>
+<p>Such projections are rarely used for model training, but in some special cases, they can be useful.</p>
+<p>It’s easy to build MIPs across the existing dimensions (lungs example).
+But if you’re going to project a volume on the plane at an arbitrary angle (arteries example),
+you again will need to use interpolation.</p>
+<p>The topic of building such projections lies rather in the domain of Computer Graphics than in Medical Imaging,
+so we’re not going to describe the exact technique here.</p>
+</section>
+<section id="id8">
+<h3>3D<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>When the volume is built, it can be visualized.
+<a class="reference internal" href="#ct-windowing"><span class="std std-ref">Windowing</span></a>
+can be applied to the volume as well.
+Also, modern workstation software and desktop viewers can further process this volume:</p>
+<ul class="simple">
+<li><p>remove parts of the volume - e.g., remove outer tissues to get a view of the internal structures</p></li>
+<li><p>automatically remove bones (doesn’t work really well, especially if the study is contrast-enhanced)</p></li>
+<li><p>automatically build carotids tree</p></li>
+</ul>
+<p>These 3D reconstructions and processing result in very beautiful images, that can be saved,
+e.g., in the DICOM file alongside the original data, or otherwise.
+In the vast majority of cases, the medical value of such images is vanishingly small.
+And they are almost never saved or used.</p>
+<p>Again, the exact technique for 3D visualization is a topic of Computer Graphics, and will not be covered here.</p>
+</section>
+<p></p>
+</section>
+<section id="how-to-split-the-data">
+<h2>How to split the data<a class="headerlink" href="#how-to-split-the-data" title="Link to this heading"></a></h2>
+<p><em>1 minute to read</em></p>
+<p>The general recommendations are <a class="reference internal" href="x-ray.html#xray-split"><span class="std std-ref">the same as for the General Purpose X-ray images</span></a>.
+But for CT studies there can be several series for each patient (CT image also has a
+<a class="reference external" href="https://dicom.innolitics.com/ciods/ct-image/patient/00100020">PatientID</a> tag).</p>
+<p>So, to split the DICOM CT dataset you need to read all the files’ headers,
+aggregate the slices into series, group them by patients, and then make a split by patients.</p>
+<p>Unlike in DICOM, a NIfTI file contains no information about the patients,
+but you can split your data by series just by splitting the file index (one file contains one series).
+However, it may not be a trivial task to split the NIfTI dataset by the patients
+if no external (outside of the NIfTI files) annotations are provided.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<p><em>10 days of work</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please focus on data preparation and do not experiment extensively with the models.
+The purpose of these tasks is to learn how to read and preprocess the CT DICOM and NIfTI data.
+That is why you’re asked to <strong>invent your own pipeline and write the code from scratch</strong>.
+Such an approach definitely requires more time,
+but it also leads to a deep understanding of the data formats and CT modality peculiarities.</p>
+</div>
+<section id="task-1-classification">
+<h3>Task 1: Classification<a class="headerlink" href="#task-1-classification" title="Link to this heading"></a></h3>
+<p>Solve the task posed in the
+<a class="reference external" href="https://www.kaggle.com/c/rsna-str-pulmonary-embolism-detection/overview">RSNA STR Pulmonary Embolism Detection challenge</a>.</p>
+<ul class="simple">
+<li><p>Do not reproduce the winner’s solutions right away - compare your approaches to the winner’s later on</p></li>
+<li><p>What approach will you choose: slice-wise or 3D?</p></li>
+<li><p>The dataset size is almost 1 TB consider using a part of it (e.g., if your disk space is not enough or training takes too long)</p></li>
+<li><p>If you’re going to pick a subset of the data, do it in a smart way</p></li>
+</ul>
+</section>
+<section id="task-2-segmentation">
+<h3>Task 2: Segmentation<a class="headerlink" href="#task-2-segmentation" title="Link to this heading"></a></h3>
+<p>Solve the task posed in the
+<a class="reference external" href="https://covid-segmentation.grand-challenge.org/">COVID-19 Lung CT Lesion Segmentation Challenge - 2020</a>.</p>
+<ul class="simple">
+<li><p>Try a slice-wise approach (2D/2.5D)</p></li>
+<li><p>Try a 3D approach</p></li>
+<li><p>Compare the speed and quality of the two (or more) approaches</p></li>
+<li><p>How can we improve the model’s prediction quality?
+Think about what other medical knowledge (and corresponding models) we can use.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mg.html" class="btn btn-neutral float-left" title="Mammography" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="conclusion.html" class="btn btn-neutral float-right" title="Conclusion" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Koninklijke Philips N.V. and others.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

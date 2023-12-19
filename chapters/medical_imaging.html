@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical Imaging &mdash; AI for Medical Imaging Course 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=8d563738"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="General Purpose X-ray" href="x-ray.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AI for Medical Imaging Course
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Medical Imaging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dicom">DICOM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#nifti">NIfTI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-the-datasets-are-created">How the datasets are created</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optional-read">Optional read</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="x-ray.html">General Purpose X-ray</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="x-ray.html#dicom-format">DICOM format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="x-ray.html#modalities">Modalities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="x-ray.html#typical-image-preprocessing">Typical image preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="x-ray.html#image-formats">Image formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="x-ray.html#how-to-split-the-data">How to split the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="x-ray.html#exercise">Exercise</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mg.html">Mammography</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mg.html#dicom-format">DICOM format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="mg.html#how-to-read-the-data">How to read the data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mg.html#typical-image-preprocessing">Typical image preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mg.html#image-formats">Image formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mg.html#how-to-split-the-data">How to split the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mg.html#exercise">Exercise</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ct.html">CT</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#dicom-format">DICOM format</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#how-to-read-the-data">How to read the data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#series-preprocessing">Series preprocessing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#slice-preprocessing">Slice preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#nifti-format">NIfTI format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#image-formats">Image formats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#volume-preprocessing">Volume preprocessing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#reconstructions">Reconstructions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#d">2D</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#id8">3D</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#how-to-split-the-data">How to split the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ct.html#exercises">Exercises</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#task-1-classification">Task 1: Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ct.html#task-2-segmentation">Task 2: Segmentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="conclusion.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors and Acknowledgments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#authors">Authors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="authors.html#acknowledgments">Acknowledgments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AI for Medical Imaging Course</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Medical Imaging</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/chapters/medical_imaging.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="medical-imaging">
+<span id="chap-medical-imaging"></span><h1>Medical Imaging<a class="headerlink" href="#medical-imaging" title="Link to this heading"></a></h1>
+<p><em>63 minutes to read</em></p>
+<p>In the majority of medical institutions, all images are stored in the so-called <strong>PACS</strong>.
+PACS (Picture Archiving and Communication System) is a technology used to store and transmit digital images and medical
+reports securely and reliably.
+The system overview: <a class="reference external" href="https://blog.peekmed.com/pacs-systems/">Picture Archiving and Communication System</a>.</p>
+<p>To speak with the doctors in the same language it’s <em>highly recommended</em> to get familiar
+with the <strong>basics of anatomy</strong> and corresponding <strong>terminology</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://radiologykey.com/general-anatomy-and-radiographic-positioning-terminology/">General anatomy and radiographic positioning terminology</a></p></li>
+<li><p><a class="reference external" href="https://radiopaedia.org/articles/anatomical-position?lang=us">Anatomical position</a></p></li>
+</ul>
+<section id="dicom">
+<h2>DICOM<a class="headerlink" href="#dicom" title="Link to this heading"></a></h2>
+<p><em>13 minutes to read</em></p>
+<p>Most of the time, you can find medical images stored in the <strong>DICOM</strong> files.
+This format is useful because it allows medical institutions to store (and transmit using DICOM standard)
+sensitive patient information and images in all diversity of the modalities and cases.</p>
+<ul>
+<li><p><a class="reference external" href="https://www.dicomstandard.org/about-home">About the DICOM standard</a></p></li>
+<li><p>Several links describing the DICOM file structure:</p>
+<p><a class="reference external" href="https://dcm4che.atlassian.net/wiki/spaces/d2/pages/1835038/A+Very+Basic+DICOM+Introduction">A Very Basic DICOM Introduction</a></p>
+<p><a class="reference external" href="https://towardsdatascience.com/understanding-dicom-bce665e62b72">Understanding DICOM</a></p>
+<p>More detailed file structure.
+<a class="reference external" href="https://www.leadtools.com/help/sdk/v21/dicom/api/overview-basic-dicom-file-structure.html">Overview: Basic DICOM File Structure</a></p>
+</li>
+<li><p>As finding required information in the original DICOM standard documentation is not very easy, one can use this handy
+<a class="reference external" href="https://dicom.innolitics.com/ciods">DICOM Standard Browser</a></p></li>
+<li><p>A commonly used Python package to work with DICOM files is <a class="reference external" href="https://pypi.org/project/pydicom/">Pydicom</a></p></li>
+</ul>
+</section>
+<section id="nifti">
+<span id="mi-nifti"></span><h2>NIfTI<a class="headerlink" href="#nifti" title="Link to this heading"></a></h2>
+<p><em>9 minutes to read</em></p>
+<p>Another popular format to store medical data is <strong>NIfTI</strong> files.
+It is mainly used to store already anonymized and preprocessed volumetric data extracted from the studies.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://nifti.nimh.nih.gov/nifti-1/documentation/hbm_nifti_2004.pdf">A quick introduction to the NIfTI-1.1 Data Format</a></p></li>
+<li><p>All the information is well-structured on the NIfTI format site (follow the links inside):
+<a class="reference external" href="https://nifti.nimh.nih.gov/">About NIfTI format</a></p></li>
+<li><p>A commonly used Python package to work with NIfTI files is <a class="reference external" href="https://nipy.org/nibabel/gettingstarted.html">NiBabel</a></p></li>
+</ul>
+</section>
+<section id="how-the-datasets-are-created">
+<h2>How the datasets are created<a class="headerlink" href="#how-the-datasets-are-created" title="Link to this heading"></a></h2>
+<p><em>35 minutes to read</em></p>
+<p>When a medical institution prepares the dataset, it follows a certain procedure, described in the paper
+<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7104701/">Preparing Medical Imaging Data for Machine Learning</a>.</p>
+</section>
+<section id="exercises">
+<span id="mi-exercises"></span><h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<p><em>2 days of work</em></p>
+<p>Do Exploratory Data Analysis (EDA) for the two datasets:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.kaggle.com/c/siim-acr-pneumothorax-segmentation/data">DICOM dataset</a></p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Use <a class="reference external" href="https://pydicom.github.io/pydicom/dev/reference/generated/pydicom.filereader.dcmread.html">dcmread</a>
+function to read the files</p></li>
+<li><p>Use <a class="reference external" href="https://pydicom.github.io/pydicom/dev/reference/generated/pydicom.dataset.Dataset.html#pydicom.dataset.Dataset.get">get()</a>
+method or tag name as a field to access the values of the tags</p></li>
+<li><p>Use <a class="reference external" href="https://pydicom.github.io/pydicom/dev/reference/generated/pydicom.dataset.Dataset.html#pydicom.dataset.Dataset.pixel_array">pixel_array</a>
+field to access the image as a NumPy array</p></li>
+<li><p>Check out <a class="reference external" href="https://pydicom.github.io/pydicom/stable/tutorials/dataset_basics.html">Dataset basics</a> and
+<a class="reference external" href="https://pydicom.github.io/pydicom/stable/old/viewing_images.html">Viewing images</a> tutorials</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><a class="reference external" href="https://www.kaggle.com/andrewmvd/liver-tumor-segmentation">NIfTI dataset</a></p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Check out <a class="reference external" href="https://nipy.org/nibabel/gettingstarted.html">Getting started</a> and
+<a class="reference external" href="https://nipy.org/nibabel/images_and_memory.html">Images and memory</a> tutorials</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="optional-read">
+<h2>Optional read<a class="headerlink" href="#optional-read" title="Link to this heading"></a></h2>
+<p>If you are already familiar with the general principles of obtaining images from different medical imaging apparatus,
+you can refresh your knowledge using the two slide decks:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://home.zhaw.ch/~scst/Biomedtec-Dateien/MedIma_Intro.pdf">Medical Imaging Modalities: An Introduction</a></p></li>
+<li><p><a class="reference external" href="https://studylib.net/doc/18646295/visual-medicine--data-acquisition-and-preprocessin">Visual Medicine: Visual Medicine: Data Acquisition and Preprocessing</a></p></li>
+</ul>
+<p>A book that will help you to deepen your knowledge about medical imaging:
+M. A. Flower “Webb’s Physics of Medical Imaging”, A TAYLOR &amp; FRANCIS BOOK, ISBN 978-1-4665-6895-2</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="x-ray.html" class="btn btn-neutral float-right" title="General Purpose X-ray" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Koninklijke Philips N.V. and others.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
