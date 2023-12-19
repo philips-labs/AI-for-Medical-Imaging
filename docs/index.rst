@@ -17,3 +17,5 @@ Welcome to the AI for Medical Imaging course!
    chapters/conclusion.rst
    chapters/authors.rst
    chapters/contribute.rst
+   chapters/mri.rst
+   chapters/pile.rst
