@@ -3,7 +3,7 @@
 # AI for Medical Imaging course
 Welcome to the AI for Medical Imaging training project page!  
 The course is a well-structured training material designed to help experienced Data Scientists start working in the Medical Imaging domain.  
-The current web-based version is available at the [AI for Medical Imaging training course](https://vigilant-broccoli-8k7648z.pages.github.io/).  
+The current web-based version is available at the [AI for Medical Imaging training course](https://super-broccoli-wo6wn41.pages.github.io/).  
 
 # Built With
 The course is built with [Sphinx](https://www.sphinx-doc.org/en/master/) using a [theme](https://github.com/readthedocs/sphinx_rtd_theme) provided by [Read the Docs](https://readthedocs.org/).
