@@ -11,26 +11,26 @@ jobs:
    runs-on: ubuntu-latest
    steps:
       - name: Set up Python 3.12
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
       - name: Upgrade pip, clone sources, install requirements, build docs
         run: |
           pip install --upgrade pip
-          git clone https://mikhailpadalko:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/philips-internal/AI-for-Medical-Imaging.git --branch main --single-branch .
+          git clone https://mikhailpadalko:${{ secrets.SPHINX_ACTION_ACCESS_TOKEN }}@github.com/philips-labs/AI-for-Medical-Imaging.git --branch main --single-branch .
           pip install -r ./docs/requirements.txt
           cd docs
           make html
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: DocumentationHTML
           path: docs/_build/html/
 
       - name: push to gh-pages
         run: |
-          git clone https://mikhailpadalko:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/philips-internal/AI-for-Medical-Imaging.git --branch gh-pages --single-branch gh-pages
+          git clone https://mikhailpadalko:${{ secrets.SPHINX_ACTION_ACCESS_TOKEN }}@github.com/philips-labs/AI-for-Medical-Imaging.git --branch gh-pages --single-branch gh-pages
           cp -r docs/_build/html/* gh-pages/
           cd gh-pages
           touch .nojekyll
@@ -43,18 +43,18 @@ jobs:
         with:
           branch: gh-pages
           directory: gh-pages
-          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          github_token: ${{ secrets.SPHINX_ACTION_ACCESS_TOKEN }}
 
  run_rinoh_pdf:
    runs-on: ubuntu-latest
    steps:
-     - uses: actions/checkout@v3
+     - uses: actions/checkout@v4
      - name: run rinoh
        run: |
          pip install -r docs/requirements.txt
          cd docs
          sphinx-build -b rinoh . _build/rinoh
-     - uses: actions/upload-artifact@v3
+     - uses: actions/upload-artifact@v4
        with:
          name: RinohPdf
          path: docs/_build/rinoh/
