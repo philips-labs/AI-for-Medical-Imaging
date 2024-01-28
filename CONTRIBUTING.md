@@ -24,18 +24,18 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-[AI for Medical Imaging Code of Conduct](https://github.com/philips-internal/AI-for-Medical-Imaging/blob/main/CODE_OF_CONDUCT.md).
+[AI for Medical Imaging Code of Conduct](https://github.com/philips-labs/AI-for-Medical-Imaging/blob/main/CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code. Please report unacceptable behavior
 to <aiformedicalimaging@gmail.com>.
 
 
 ## I Have a Question
 
-Before you ask a question, it is best to search for existing [Issues](https://github.com/philips-internal/AI-for-Medical-Imaging/issues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
+Before you ask a question, it is best to search for existing [Issues](https://github.com/philips-labs/AI-for-Medical-Imaging/issues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
 
 If you still feel the need to ask a question and need clarification, we recommend the following:
 
-- Open an [Issue](https://github.com/philips-internal/AI-for-Medical-Imaging/issues/new).
+- Open an [Issue](https://github.com/philips-labs/AI-for-Medical-Imaging/issues/new).
 - Provide as much context as you can about what you're running into.
 
 We will then take care of the issue as soon as possible.
@@ -51,12 +51,12 @@ This section guides you through submitting an enhancement suggestion for AI for 
 
 #### Before Submitting an Enhancement
 
-- Perform a [search](https://github.com/philips-internal/AI-for-Medical-Imaging/issues) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
+- Perform a [search](https://github.com/philips-labs/AI-for-Medical-Imaging/issues) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
 - Find out whether your idea fits with the scope and aims of the project. Keep in mind that we want features that will be useful to the majority of our users and not just a small subset.
 
 #### How Do I Submit a Good Enhancement Suggestion?
 
-Enhancement suggestions are tracked as [GitHub issues](https://github.com/philips-internal/AI-for-Medical-Imaging/issues).
+Enhancement suggestions are tracked as [GitHub issues](https://github.com/philips-labs/AI-for-Medical-Imaging/issues).
 
 - Use a **clear and descriptive title** for the issue to identify the suggestion.
 - Provide a **detailed description of the suggested enhancement**.
@@ -65,7 +65,7 @@ Enhancement suggestions are tracked as [GitHub issues](https://github.com/philip
 #### Roadmap
 
 Our plans and most wanted contributions are listed in the
-[ROADMAP.md](https://github.com/philips-internal/AI-for-Medical-Imaging/blob/main/ROADMAP.md).  
+[ROADMAP.md](https://github.com/philips-labs/AI-for-Medical-Imaging/blob/main/ROADMAP.md).  
 
 ### Your First Contribution
 
@@ -74,7 +74,7 @@ To set up the work environment follow these steps:
 ```conda create -n ai4mi python=3.12```  
 ```conda activate ai4mi```
 - clone the repo:
-```git clone https://github.com/philips-internal/AI-for-Medical-Imaging```
+```git clone https://github.com/philips-labs/AI-for-Medical-Imaging```
 - install requirements:  
 ```cd AI-for-Medical-Imaging/docs```  
 ```pip install -r requirements.txt```
@@ -82,7 +82,7 @@ To set up the work environment follow these steps:
 ```make html```
 
 If everything works, you can start contributing:
-- create a new [Issue](https://github.com/philips-internal/AI-for-Medical-Imaging/issues) describing your contribution idea,
+- create a new [Issue](https://github.com/philips-labs/AI-for-Medical-Imaging/issues) describing your contribution idea,
 or join existing activity;
 - create new or checkout an existing branch corresponding to your feature, please use the `features/<your-feature-name>` template for a branch name; 
 - add/modify content;
@@ -100,10 +100,10 @@ Please add a short and descriptive message for each commit.
 ### Recognition Model
 
 All contributors will be carved in bits of the
-[README.md](https://github.com/philips-internal/AI-for-Medical-Imaging?tab=readme-ov-file#ai-for-medical-imaging-course)
+[README.md](https://github.com/philips-labs/AI-for-Medical-Imaging?tab=readme-ov-file#ai-for-medical-imaging-course)
 file and on the built website.  
-Contributors who made a significant content addition like a new chapter, a notable set of paragraphs, or a code example will be listed as [Authors](https://github.com/philips-internal/AI-for-Medical-Imaging?tab=readme-ov-file#authors).  
-Smaller contributions will be listed in the [Acknowledgements](https://github.com/philips-internal/AI-for-Medical-Imaging?tab=readme-ov-file#acknowledgments) section. 
+Contributors who made a significant content addition like a new chapter, a notable set of paragraphs, or a code example will be listed as [Authors](https://github.com/philips-labs/AI-for-Medical-Imaging?tab=readme-ov-file#authors).  
+Smaller contributions will be listed in the [Acknowledgements](https://github.com/philips-labs/AI-for-Medical-Imaging?tab=readme-ov-file#acknowledgments) section. 
 
 ## Attribution
 This guide is based on the **contributing-gen**. [Make your own](https://github.com/bttger/contributing-gen)!
