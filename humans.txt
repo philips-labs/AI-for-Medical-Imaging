@@ -9,7 +9,7 @@
 	Musicians we feature
 
 /* SITE */
-	Last update: 2023-12-19
+	Last update: 2024-01-28
 	Standards: HTML5, CSS3
 	Components: Sphinx
 	Software: PyCharm, Sublime Text, GitHub (gh-pages)
