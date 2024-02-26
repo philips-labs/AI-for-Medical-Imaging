@@ -1,7 +1,6 @@
 name: sphinx
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - main
@@ -15,10 +14,14 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Upgrade pip, clone sources, install requirements, build docs
+      - name: clone sources
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Upgrade pip, install requirements, build docs
         run: |
           pip install --upgrade pip
-          git clone https://mikhailpadalko:${{ secrets.SPHINX_ACTION_ACCESS_TOKEN }}@github.com/philips-labs/AI-for-Medical-Imaging.git --branch main --single-branch .
           pip install -r ./docs/requirements.txt
           cd docs
           make html
@@ -28,9 +31,15 @@ jobs:
           name: DocumentationHTML
           path: docs/_build/html/
 
+      - name: clone gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          clean: false
+          path: gh-pages
+
       - name: push to gh-pages
         run: |
-          git clone https://mikhailpadalko:${{ secrets.SPHINX_ACTION_ACCESS_TOKEN }}@github.com/philips-labs/AI-for-Medical-Imaging.git --branch gh-pages --single-branch gh-pages
           cp -r docs/_build/html/* gh-pages/
           cd gh-pages
           touch .nojekyll
