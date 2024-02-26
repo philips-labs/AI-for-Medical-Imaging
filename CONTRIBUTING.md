@@ -26,7 +26,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 This project and everyone participating in it is governed by the
 [AI for Medical Imaging Code of Conduct](https://github.com/philips-labs/AI-for-Medical-Imaging/blob/main/CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code. Please report unacceptable behavior
-to <aiformedicalimaging@gmail.com>.
+to <mikhail.padalko@philips.com>.
 
 
 ## I Have a Question
